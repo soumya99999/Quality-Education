@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .myClass {
+            fill: #f9d2d2;
+            stroke: #333;
+        }
+
+        #roadmap-container {
+            font-family: Arial, sans-serif;
+            font-size: 14px;
+        }
+
+        .node {
+            font-weight: bold;
+            font-size: 16px;
+            padding: 10px;
+            border-radius: 5px;
+        }
+
+        .edge {
+            color: #333;
+        }
+
+        .edgePath {
+            stroke-width: 2;
+            stroke: #333;
+            fill: none;
+        }
+
+        .htmlNode {
+            fill: #ffe699;
+        }
+
+        .jsNode {
+            fill: #ffcccc;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="roadmap-container">
+        <!-- Add the container for the Mermaid diagram here -->
+    </div>
+
+    <script>
+        mermaid.initialize({ startOnLoad: true });
+
+        document.addEventListener('DOMContentLoaded', function () {
+            mermaid.render('roadmap-diagram', `
+                graph TD
+                A[Frontend Developer] --> B(HTML)
+                A --> C(CSS)
+                A --> D(JavaScript)
+                classDef myClass fill:#f9d2d2,stroke:#333;
+                class B,C myClass;
+                class B,C node;
+                classDef htmlNode fill:#ffe699;
+                class B htmlNode;
+                classDef jsNode fill:#ffcccc;
+                class D jsNode;
+                B --> E(HTML5)
+                B --> F(Semantic HTML)
+                C --> G(CSS3)
+                C --> H(Preprocessors)
+                C --> I(Responsive Design)
+                D --> J(Vanilla JS)
+                D --> K(JS Frameworks/Libraries)
+                J --> L(ECMAScript 6+)
+                J --> M(AJAX)
+                K --> N(React)
+                K --> O(Angular)
+                K --> P(Vue.js)
+                K --> Q(Other libraries)
+                N --> R(Redux)
+                N --> S(Routing)
+                O --> T(Templates)
+                O --> U(Directives)
+                P --> V(Vuex)
+                P --> W(Routing)
+                B --> X(Semantic UI)
+                B --> Y(Bootstrap)
+                C --> Z(Sass/Less)
+                K --> AA(TypeScript)
+                K --> AB(State Management)
+                AB --> AC(Context API)
+                AB --> AD(Flux)
+                AB --> AE(MobX)
+                AB --> AF(GraphQL)
+                D --> AG(jQuery)
+                AG --> AH(Plugins)
+                J --> AI(Event Loop)
+                AI --> AJ(Callbacks)
+                AI --> AK(Promises)
+                AI --> AL(Async/Await)
+                J --> AM(DOM Manipulation)
+                AM --> AN(Events)
+                AM --> AO(Document)
+                D --> AP(Debugging)
+                AP --> AQ(Browser Dev Tools)
+                AP --> AR(ESLint)
+                B --> AS(Accessibility)
+                B --> AT(SEO)
+                D --> AU(Unit Testing)
+                AU --> AV(Jest)
+                AU --> AW(Mocha)
+                AU --> AX(Jasmine)
+                AU --> AY(Karma)
+                style A fill:#ffe699,stroke:#333;
+                style D fill:#ffcccc,stroke:#333;
+            `, function (svgCode) {
+                // Add the CSS styles to the SVG code
+                const parser = new DOMParser();
+                const svgDoc = parser.parseFromString(svgCode, 'image/svg+xml');
+
+                // Define additional CSS styles
+                const additionalStyles = `
+                    .node rect {
+                        fill: #eee; /* Example additional style */
+                    }
+                    /* Add more CSS styles as needed */
+                `;
+
+                // Append additional CSS styles to the SVG
+                const styleNode = document.createElementNS('http://www.w3.org/2000/svg', 'style');
+                styleNode.innerHTML = additionalStyles;
+                svgDoc.documentElement.appendChild(styleNode);
+
+                // Convert the modified SVG back to a string
+                const serializer = new XMLSerializer();
+                const modifiedSvgCode = serializer.serializeToString(svgDoc);
+
+                // Render the modified SVG code
+                document.getElementById('roadmap-container').innerHTML = modifiedSvgCode;
+            });
+        });
+    </script>
+
+</body>
+
+</html>

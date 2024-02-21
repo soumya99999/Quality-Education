@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Platform</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        h1 {
+            color: #45286c;
+            margin-bottom: 20px;
+        }
+
+        .question-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .question {
+            color: #333;
+            margin-bottom: 10px;
+            text-align: left;
+        }
+
+        .options {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 20px;
+        }
+
+        .option-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .options label {
+            margin-left: 5px;
+            color: #333;
+        }
+
+        .submit-btn {
+            padding: 10px 20px;
+            background-color: #45286c;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .submit-btn:hover {
+            background-color: #5e3a89;
+        }
+
+        .score {
+            font-size: 24px;
+            color: #45286c;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <h1>Quiz Platform</h1>
+        <div class="question-container">
+            <div class="question" id="question"></div>
+            <div class="options" id="options"></div>
+        </div>
+        <button class="submit-btn" id="submit-btn">Submit</button>
+        <div class="score" id="score" style="display: none;"></div>
+    </div>
+
+    <script>
+        const quiz = [
+            {
+                question: 'What does HTML stand for?',
+                options: ['HyperText Markup Language', 'Hyper Transfer Markup Language', 'HyperText Machine Language', 'Hyper Tool Markup Language'],
+                answer: 0
+            },
+            {
+                question: 'Which of the following is NOT a feature of HTML?',
+                options: ['It is easy to learn and use.', 'It is platform-dependent.', 'Images, videos, and audio can be added to a web page.', 'Hypertext can be added to the text.'],
+                answer: 1
+            },
+            {
+                question: 'Which of the following is NOT an advantage of HTML?',
+                options: ['HTML is used to build websites.', 'It is supported by all browsers.', 'It can be integrated with other languages like CSS, JavaScript, etc.', 'It can create dynamic web pages.'],
+                answer: 3
+            }
+        ];
+
+        let score = 0;
+        let currentQuestion = 0;
+
+        const questionElement = document.getElementById('question');
+        const optionsElement = document.getElementById('options');
+        const submitButton = document.getElementById('submit-btn');
+        const scoreElement = document.getElementById('score');
+        const questionContainer = document.querySelector('.question-container');
+
+        function renderQuiz() {
+            const currentQuiz = quiz[currentQuestion];
+            questionElement.textContent = currentQuiz.question;
+            optionsElement.innerHTML = '';
+            currentQuiz.options.forEach((option, index) => {
+                const optionContainer = document.createElement('div');
+                optionContainer.classList.add('option-item');
+
+                const inputElement = document.createElement('input');
+                inputElement.type = 'radio';
+                inputElement.name = 'option';
+                inputElement.value = index;
+
+                const labelElement = document.createElement('label');
+                labelElement.textContent = option;
+
+                optionContainer.appendChild(inputElement);
+                optionContainer.appendChild(labelElement);
+
+                optionsElement.appendChild(optionContainer);
+            });
+        }
+
+        function calculateScore() {
+            const selectedOption = document.querySelector('input[name="option"]:checked');
+            if (selectedOption) {
+                const selectedAnswer = parseInt(selectedOption.value);
+                if (selectedAnswer === quiz[currentQuestion].answer) {
+                    score++;
+                }
+            }
+        }
+
+        function showScore() {
+            questionContainer.style.display = 'none';
+            submitButton.style.display = 'none';
+            scoreElement.textContent = `Your score is ${score}/${quiz.length}`;
+            scoreElement.style.display = 'block';
+        }
+
+        submitButton.addEventListener('click', () => {
+            calculateScore();
+            currentQuestion++;
+            if (currentQuestion < quiz.length) {
+                renderQuiz();
+            } else {
+                showScore();
+            }
+        });
+
+        renderQuiz();
+        questionContainer.style.display = 'block';
+    </script>
+</body>
+
+</html>

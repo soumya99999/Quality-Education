@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- font awesome cdn link  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.2/css/all.min.css">
+
+    <!-- custom css file link  -->
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Nunito:wght@200;300;400;500;600;700&display=swap');
+        @import url('~lucide-static/font/Lucide.css');
+
+        body {
+            margin: 0;
+            /* Remove default margin */
+            font-family: 'Arial', sans-serif;
+        }
+
+        .grid-container {
+            display: grid;
+            grid-template-columns: 1fr 4fr;
+            grid-template-rows: 1fr 4fr 1fr;
+            grid-template-areas:
+                "header header header"
+                "content content content"
+                "content content content"
+                "content content content"
+                "footer footer footer";
+            grid-gap: 1rem;
+        }
+
+        .grid-item {
+            padding: 2px;
+            text-align: left;
+            border: 4px solid #090909;
+        }
+
+        .header {
+            grid-area: header;
+            margin-bottom: 88px;
+        }
+
+        .sidebar {
+            grid-area: sidebar;
+            height: 100vh;
+            width: 250px;
+            background: linear-gradient(to right, #090f12, #113b50);
+            color: white;
+            position: fixed;
+            top: 0;
+            left: -259px;
+            transition: left 0.3s ease;
+            z-index: 1;
+        }
+
+        .content {
+            grid-area: content;
+            margin-left: 0;
+            padding: 16px;
+            transition: margin-left 0.3s ease;
+            display: grid;
+            grid-gap: 1rem;
+        }
+
+
+
+        .box:hover {
+            transform: scale(1.05);
+        }
+
+
+        .navbar img {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            opacity: 0.5;
+            z-index: 1;
+
+        }
+
+        .navbar {
+            top: 0;
+            background-color: #0a0a0b;
+            padding: 22px 0;
+            box-shadow: 0 10px 50px rgba(0, 0, 0, 0.1);
+            z-index: 2;
+            position: relative;
+            /* Change position to relative */
+            overflow: hidden;
+        }
+
+        .navbar ul {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            text-decoration: none;
+        }
+
+        .navbar ul li {
+            z-index: 3;
+            color: white !important;
+            text-decoration: none;
+            list-style-type: none;
+        }
+
+        .navbar ul li a {
+            cursor: pointer;
+            color: white;
+            text-decoration: none;
+        }
+
+        .navbar li a:hover {
+            padding: 3px 3px;
+            color: rgb(232, 233, 238);
+            transform: scale(1.05);
+            text-decoration: none;
+        }
+
+        .search {
+            color: white;
+            z-index: 3;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        .search[placeholder="Search......"] {
+            margin: -18px -15px;
+            padding: 9px 16px;
+        }
+
+        .search input {
+            width: 276px;
+            margin-left: 24px;
+        }
+
+
+
+
+        .toggle-btn {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            cursor: pointer;
+            z-index: 3;
+        }
+
+        .toggle-btn:hover {
+            color: #555;
+
+        }
+
+        #cont {
+            margin: -98px 3px -10px 5px;
+            background-image: radial-gradient(circle at center center, rgba(33, 33, 33, 0), rgb(33, 33, 33)), repeating-linear-gradient(135deg, rgb(33, 33, 33) 0px, rgb(33, 33, 33) 1px, transparent 1px, transparent 4px), repeating-linear-gradient(45deg, rgb(56, 56, 56) 0px, rgb(56, 56, 56) 5px, transparent 5px, transparent 6px), linear-gradient(90deg, rgb(33, 33, 33), rgb(33, 33, 33));
+        }
+
+        .sidebar li a,
+        li {
+            text-decoration: none;
+            list-style-type: none;
+            color: rgb(194 179 179);
+        }
+
+        .toggle-btn {
+            color: rgb(172, 173, 237);
+        }
+
+
+
+        @media screen and (max-width: 768px) {
+            .grid-container {
+                grid-template-columns: 1fr;
+                grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+                grid-template-areas:
+                    "header"
+                    "sidebar"
+                    "content"
+                    "content"
+                    "footer";
+            }
+
+            .header {
+                margin-bottom: 0;
+            }
+
+            .sidebar {
+                width: 100%;
+                left: 0;
+                position: relative;
+            }
+
+            .content {
+                margin-left: 0;
+            }
+
+            .search {
+                display: block;
+            }
+
+            .navbar img {
+                display: none;
+            }
+
+            .navbar ul {
+                position: fixed;
+                width: 100%;
+                height: 100vh;
+                top: 0;
+                left: -100%;
+                background-color: #0a0a0b;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                transition: left 0.3s ease;
+                z-index: 3;
+            }
+
+            .navbar.open ul {
+                left: 0;
+            }
+
+            .navbar ul li {
+                text-align: center;
+            }
+        }
+
+        .dark-mode {
+            background-color: #0c0b0c;
+            color: white;
+        }
+
+        .dark-mode .box {
+            background-color: #333;
+            color: white;
+        }
+
+        .dark-mode ul li a {
+            color: white
+        }
+
+        .dark-mode .sidebar {
+            background: #333;
+        }
+
+        .dark-mode .navbar {
+            background-color: #333;
+        }
+
+        .dark-mode .toggle-btn {
+            color: rgb(239, 230, 230);
+        }
+
+        .dark-mode .dropdown-content a {
+            background: #333;
+        }
+
+        .dark-mode-btn {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            cursor: pointer;
+            z-index: 3;
+            font-size: 24px;
+            display: flex;
+            align-items: center;
+        }
+
+        .dark-mode-btn i {
+            margin-right: 5px;
+        }
+
+        .dark-mode-btn:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            z-index: 4;
+        }
+
+        .dropdown li {
+            color: rgb(194 179 179);
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #211538;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 5;
+        }
+
+        .dropdown-content a {
+            color: white;
+            background: linear-gradient(to right, #16222a, #3a6073);
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        .dropbtn {
+            cursor: pointer;
+            background-color: inherit;
+        }
+
+        .dropdown-content a:hover {
+            background: #121111;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .icon {
+            margin: 8px 7px;
+            padding: 4px 1px;
+        }
+
+        .footer {
+            grid-area: footer;
+            text-align: center;
+            background-color: #333;
+            color: #fff;
+        }
+
+        #menu-btn:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+
+        .sidebar ul li a:hover {
+            box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5);
+        }
+
+        .navbar-dropbtn {
+            z-index: 4;
+        }
+
+        .box-container1 .box ul {
+            letter-spacing: 3px;
+            text-align: left;
+            padding: 0px;
+        }
+
+        .dark-mode .box-container1,
+        .box-container2 ul li a {
+            color: white;
+        }
+
+
+        .box-container2 .box ul {
+            /* border:2px solid red; */
+            text-align: left;
+            padding: 0px;
+        }
+
+        .box {
+            background-color: #000;
+            color: #fff;
+        }
+
+        .box-container1 ul li a,
+        .box-container2 ul li a {
+            text-decoration: none;
+            list-style-type: none;
+            letter-spacing: 1px;
+            color: #121111;
+            line-height: 2rem;
+        }
+
+        .dark-mode .box {
+            background-color: #433d3d;
+            color: white;
+        }
+
+        .dark-mode .box-container1 ul li a,
+        .box-container2 ul li a {
+            color: white;
+        }
+
+        .box {
+            background-color: #f9f9f9;
+            border-radius: 8px;
+            border: 2px solid black;
+            padding: 20px;
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+
+
+        .box-container1 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-gap: 3rem;
+            margin-top: 0.5rem;
+        }
+
+        .box-container2 {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        body:not(.dark-mode) .box-container2 ul li a,
+        body:not(.dark-mode) .box-container2 ul li a {
+            color: black;
+        }
+
+        /* Typography Enhancement */
+        body,
+        h1,
+        h2,
+        h3,
+        p {
+            font-family: 'Nunito', sans-serif;
+            /* A cleaner, more professional font */
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Dark mode -->
+
+    <body class="dark-mode">
+        <!-- ... -->
+    </body>
+    <!-- Whole Container -->
+    <div class="grid-container">
+
+        <!-- Header -->
+        <div class="grid-item header" id="head">
+            <div class="toggle-btn" onclick="toggleSidebar()">
+                <div id="menu-btn" class="fas fa-bars"></div>
+            </div>
+            <nav class="navbar">
+                <img src="photo-1481627834876-b7833e8f5570 - Copy.jpg" alt="">
+                <ul>
+                    <li class="dropbtn navbar-dropbtn">Courses<box-icon name='chevron-down' color='white'
+                            class="icon"></box-icon></box-icon></li>
+                    <div class="dropdown-content">
+                        <ul>
+                            <li><a href="Mechanical Engineering Courses">Mechanical Engineering Courses</a></li>
+                            <li><a href="Electrical Engineering Courses">Electrical Engineering Courses</a></li>
+                            <li><a href="Civil Engineering Courses">Civil Engineering Courses</a></li>
+                            <li><a href="Computer Science and Engineering Courses">Computer Science and Engineering
+                                    Courses</a></li>
+                            <li><a href="Chemical Engineering Courses">Chemical Engineering Courses</a></li>
+                            <li><a href="Aerospace Engineering Courses">Aerospace Engineering Courses</a></li>
+                        </ul>
+                    </div>
+                    <li><a href="Programs">Programs</a></li>
+                    <li><a href="Contant Us">Contant Us</a></li>
+                    <div class="search">
+                        <input type="text" id="search-navbar" placeholder="Search......">
+                    </div>
+                </ul>
+                <div class="dark-mode-btn" onclick="toggleDarkMode()">
+                    <box-icon type='solid' name='moon'></box-icon>
+            </nav>
+        </div>
+
+        <!-- Content -->
+        <div class="grid-item content" id="cont">
+            <h2>Quick options</h2>
+            <div class="box-container1">
+                <div class="box">
+                    <ul>
+                        <li><a href="https://jsfiddle.net/">Code Playground</a></li>
+                        <li><a href="https://leetcode.com/">Algorithm Practice</a></li>
+                        <li><a href="https://git-scm.com/">Git and GitHub</a></li>
+                        <li><a href="https://developer.mozilla.org/en-US/">Documentation</a></li>
+                        <li><a href="https://www.codewars.com/">Code Practice</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <ul>
+                        <li><a href="https://codesandbox.io/">Online IDEs</a></li>
+                        <li><a href="https://stackoverflow.com/">Stack Overflow</a></li>
+                        <li><a href="https://www.npmjs.com/">Package Managers</a></li>
+                        <li><a href="https://www.mercurial-scm.org/">Mercurial</a></li>
+                        <li><a href="https://www.udemy.com/">Learning Platforms</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <ul>
+                        <li><a href="https://subversion.apache.org/">Subversion</a></li>
+                        <li><a href="https://codepen.io/">CodePen</a></li>
+                        <li><a href="https://marketplace.visualstudio.com/">VS Code Extensions</a></li>
+                        <li><a href="https://www.figma.com/">Design Tools</a></li>
+                        <li><a href="https://gist.github.com/">GitHub Gists</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <ul>
+                        <li> <a href="https://www.gitlab.com/">GitLab</a></li>
+                        <li><a href="https://www.hackerrank.com/">Competitive Coding</a></li>
+                        <li><a href="https://www.atlassian.com/software/bitbucket">Bitbucket</a></li>
+                    </ul>
+                </div>
+            </div>
+            <h2>Our Courses</h2>
+            <div class="box-container2">
+                <div class="box">
+                    <ul>
+                        <li><a href="https://www.coursera.org/specializations/full-stack-react">Full Stack
+                                Development</a></li>
+                        <li><a href="#">DevOps</a></li>
+                        <li><a href="roadmap.html">Frontend Development</a></li>
+                        <li><a href="https://www.udemy.com/courses/development/web-development/">Backend Development</a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="box">
+                    <ul>
+                        <li><a href="#">PostgreSQL</a></li>
+                        <li><a href="#">AI and Data Scientist</a></li>
+                        <li><a href="#">Full Stack</a></li>
+                        <li><a href="#">Blockchain</a></li>
+                        <li><a href="#">Android</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <ul>
+                        <li><a href="#">C++</a></li>
+                        <li><a href="#">Flutter</a></li>
+                        <li><a href="#">Cyber Security</a></li>
+                        <li><a href="#">QA</a></li>
+                        <li><a href="#">Software Architect</a></li>
+                    </ul>
+                </div>
+                <div class="box">
+                    <ul>
+                        <li><a href="#">Game Developer</a></li>
+                        <li><a href="#">Angular</a></li>
+                        <li><a href="#">SQL</a></li>
+                        <li><a href="#">AWS</a></li>
+                        <li><a href="#">API Security</a></li>
+                        <li><a href="#">UX Design</a></li>
+                        <li><a href="#">React Native</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Sidebar -->
+        <div class="grid-item sidebar" id="side">
+            <ul>
+                <li><box-icon name='home' color='white' class="icon"></box-icon><a href="Home">Home</a></li><br>
+                <li><box-icon type='solid' name='user-detail' color='white' class="icon"></box-icon><a
+                        href="Student details">Student
+                        details</a></li><br>
+
+                <li><box-icon name='dashboard' type='solid' color='#ffffff' class="icon"></box-icon><a
+                        href="MY DASHBOARD">My
+                        Dashbord</a></li><br>
+                <li><box-icon name='flag' color='white' class="icon"></box-icon><a href="MY GOALS">My Goals</a></li><br>
+                <li><box-icon name='book-reader' color='white' class="icon"></box-icon><a href="Courses">Courses</a>
+                </li><br>
+                <div class="dropdown">
+                    <li class="dropbtn"><box-icon name='cog' color='white' class="icon"></box-icon>User
+                        Settings<box-icon name='chevron-down' color='white' class="icon"></box-icon></box-icon></li>
+                    <div class="dropdown-content">
+                        <a href="Help & support">Help & support</a>
+                        <a href="Help centre">Help centre</a>
+                        <a href="Report">Report</a>
+                        <a href="Privacy">Privacy</a>
+                        <a href="Feedback">Feedback</a>
+                        <a href="CONTACT US">CONTACT US</a>
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+
+    <!-- Footer -->
+    <div class="grid-item footer" id="foot">
+        <p>&copy; 2024 Education Dashboard</p>
+    </div>
+    </div>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <script>
+        function toggleSidebar() {
+            var sidebar = document.getElementById('side');
+            var content = document.getElementById('cont');
+            var navbar = document.getElementsByClassName('navbar')[0];
+
+            if (sidebar.style.left === "0px") {
+                sidebar.style.left = "-259px";
+                content.style.marginLeft = "0";
+                navbar.style.marginLeft = "0";
+
+            } else {
+                sidebar.style.left = "0";
+                navbar.style.marginLeft = "260px";
+                content.style.marginLeft = "250px";
+                search_bar.style.marginLeft = "260px";
+            }
+        }
+        function toggleNavbar() {
+            var navbar = document.getElementById('navbar');
+            navbar.classList.toggle('open');
+        }
+
+        function toggleDarkMode() {
+            var body = document.body;
+            body.classList.toggle('dark-mode');
+        }
+
+        // Timer functionality
+        let timerStart;
+        const links = document.querySelectorAll('.box-container1 a, .box-container2 a');
+
+        links.forEach(link => {
+            link.addEventListener('click', () => {
+                timerStart = Date.now(); // Start the timer
+            });
+        });
+
+        window.addEventListener('visibilitychange', () => {
+            if (document.visibilityState === 'visible' && timerStart) {
+                const timerEnd = Date.now();
+                const timeSpent = timerEnd - timerStart;
+                console.log(`Time spent on the clicked link: ${timeSpent} milliseconds`);
+                timerStart = undefined; // Reset the timer
+            }
+        });
+
+
+
+    </script>
+</body>
+
+</html>

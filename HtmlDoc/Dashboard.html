@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Developer Roadmap</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        .tree-container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #f5f5f5;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tree ul {
+            padding: 0;
+            list-style: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tree ul ul {
+            margin-left: 2rem;
+            border-left: 1px solid #ddd;
+        }
+
+        .tree li {
+            margin-bottom: 0.5rem;
+        }
+
+        .tree a {
+            text-decoration: none;
+            color: #333;
+        }
+
+        .tree a:hover {
+            text-decoration: underline;
+            color: #f22f2f;
+        }
+
+        .tree h3 {
+            font-size: 1.25rem;
+            margin-top: 1rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .tree p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-top: 0.25rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .branch:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background-color: #ddd;
+            left: 0;
+            transform: translateY(-50%);
+            border-radius: 0 5px 5px 0;
+        }
+
+        .branch ul {
+            padding-left: 10px;
+        }
+
+        .branch li {
+            position: relative;
+            padding-left: 20px;
+        }
+
+        .branch li:before {
+            content: "";
+            position: absolute;
+            top: 50%;
+            height: 10px;
+            width: 10px;
+            background-color: #ddd;
+            left: 0;
+            transform: translateY(-50%);
+            border-radius: 5px;
+        }
+        .horizontal-list {
+    display: flex;
+    align-items: center;
+}
+
+.horizontal-list li {
+    margin-right: 2rem;
+}
+
+.horizontal-list li:last-child {
+    margin-right: 0;
+}
+    </style>
+</head>
+<body>
+<div class="tree-container">
+    <div class="tree">
+        <ul class="branch">
+            <li>
+                <h3>Getting Started</h3>
+                <ul class="horizontal-list">
+                    <li class="branch">
+                        <a href="#">HTML</a>
+                        <ul class="horizontal-list">
+                            <li><a href="#">HTML Basics</a></li>
+                            <li><a href="#">HTML5</a></li>
+                            <li><a href="#">Accessibility</a></li>
+                        </ul>
+                    </li>
+                    <div class="tree-container">
+                        <div class="tree">
+                            <ul class="branch">
+                                <li>
+                                    <h3>Getting Started</h3>
+                                    <ul class="horizontal-list">
+                                        <li class="branch">
+                                            <a href="#">HTML</a>
+                                            <ul class="horizontal-list">
+                                                <li><a href="#">HTML Basics</a></li>
+                                                <li><a href="#">HTML5</a></li>
+                                                <li><a href="#">Accessibility</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="branch">
+                                            <a href="#">CSS</a>
+                                            <ul class="horizontal-list">
+                                                <li><a href="#">CSS Basics</a></li>
+                                                <li><a href="#">CSS Grid</a></li>
+                                                <li><a href="#">CSS Flexbox</a></li>
+                                                <li><a href="#">CSS Transitions & Animations</a></li>
+                                            </ul>
+                                        </li>
+                                        <li class="branch">
+                                            <a href="#">JavaScript</a>
+                                            <ul class="horizontal-list">
+                                                <li><a href="#">JavaScript Basics</a></li>
+                                                <li><a href="#">ES6 Features</a></li>
+                                                <li><a href="#">DOM Manipulation</a></li>
+                                                <li><a href="#">AJAX & Fetch API</a></li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </ul></div>
+            </body>
+        </html>

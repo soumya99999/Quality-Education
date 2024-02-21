@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML Introduction</title>
+    <style>
+        /* Resetting default margin and padding */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body styles */
+        html,
+        body {
+            overflow-y: scroll;
+            /* Disable the scrollbar */
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        /* Header styles */
+        header {
+            background-color: #45286c;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+
+        /* Main container styles */
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section styles */
+        section {
+            margin-bottom: 30px;
+        }
+
+        h2 {
+            color: #45286c;
+            margin-bottom: 10px;
+        }
+
+        p {
+            margin-bottom: 15px;
+        }
+
+        /* Button styles */
+        .quiz-button {
+            background-color: #45286c;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-left: 73rem;
+        }
+
+        .quiz-button:hover {
+            background-color: #5e3a89;
+        }
+
+        /* Timer styles */
+        #timer {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            color: #fff;
+            font-size: 16px;
+            background-color: #45286c;
+            padding: 5px 10px;
+            border-radius: 5px;
+            z-index: 999;
+        }
+
+        /* Sidebar styles */
+        .sidebar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 200px;
+            height: 100%;
+            background-color: #45286c;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .sidebar ul {
+            list-style-type: none;
+            text-align:left;
+        }
+
+        .sidebar li {
+            margin-bottom: 10px;
+        }
+
+        .sidebar a {
+            color: #fff;
+            text-decoration: none;
+        }
+
+        .sidebar a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="sidebar">
+            <ul>
+                <li><a href="#">HTML Basics</a></li>
+                <li><a href="#">HTML Tags</a></li>
+                <li><a href="#">HTML Tables</a></li>
+                <li><a href="#">HTML Lists</a></li>
+                <li><a href="#">HTML Formatting</a></li>
+                <li><a href="#">HTML Form</a></li>
+                <li><a href="#">HTML Advanced Concepts</a></li>
+                <li><a href="#">HTML References</a></li>
+                <li><a href="#">HTML Miscellaneous</a></li>
+                <li><a href="#">HTML Exercises</a></li>
+                <li><a href="#">HTML Examples</a></li>
+                <li><a href="#">HTML Interview Questions</a></li>
+                <li><a href="#">HTML CheatSheet</a></li>
+                <li><a href="#">HTML Recommended Tutorials</a></li>
+            </ul>
+        </div>
+        <h1>HTML Introduction</h1>
+    </header>
+    <div class="container">
+        <section>
+            <h2>What is HTML?</h2>
+            <p>HTML stands for HyperText Markup Language. It is used to design web pages using a markup language. HTML
+                is a
+                combination of Hypertext and Markup language. Hypertext defines the link between web pages. A markup
+                language is used to define the text document within the tag which defines the structure of web pages.
+                This
+                language is used to annotate (make notes for the computer) text so that a machine can understand it and
+                manipulate text accordingly. Most markup languages (e.g. HTML) are human-readable. The language uses
+                tags to
+                define what manipulation has to be done on the text.
+            </p>
+        </section>
+        <section>
+            <h2>Table of Content</h2>
+            <ul>
+                <li>HTML versions</li>
+                <li>HTML Elements and Tags</li>
+                <li>HTML Page Structure</li>
+                <li>Features of HTML</li>
+                <li>Why learn HTML? </li>
+                <li>Advantages of HTML</li>
+                <li>Disadvantages of HTML</li>
+            </ul>
+        </section>
+        <section>
+            <h2>HTML Versions</h2>
+            <p>HTML is a markup language used by the browser to manipulate text, images, and other content, in order to
+                display it in the required format. HTML was created by Tim Berners-Lee in 1991. The first-ever version
+                of HTML was HTML 1.0, but the first standard version was HTML 2.0, published in 1995.</p>
+        </section>
+        <section>
+            <h2>HTML Elements and Tags</h2>
+            <p>HTML uses predefined tags and elements which tell the browser how to properly display the content.
+                Remember
+                to include closing tags. If omitted, the browser applies the effect of the opening tag until the end of
+                the
+                page.</p>
+        </section>
+        <section>
+            <h2>HTML Page Structure</h2>
+            <p>The basic structure of an HTML page is laid out below. It contains the essential building-block elements
+                (i.e. doctype declaration, HTML, head, title, and body elements) upon which all web pages are created.
+            </p>
+            <p><strong>DOCTYPE html:</strong> This is the document type declaration (not technically a tag). It declares
+                a
+                document as being an HTML document. The doctype declaration is not case-sensitive.</p>
+            <p><strong>&lt;html&gt;:</strong> This is called the HTML root element. All other elements are contained
+                within
+                it.</p>
+            <p><strong>&lt;head&gt;:</strong> The head tag contains the “behind the scenes” elements for a webpage.
+                Elements
+                within the head aren't visible on the front-end of a webpage. HTML elements used inside the &lt;head&gt;
+                element include:</p>
+            <ul>
+                <li><strong>&lt;style&gt;:</strong> This HTML tag allows us to insert styling into our webpages and make
+                    them appealing to look at with the help of CSS.</li>
+                <li><strong>&lt;title&gt;:</strong> The title is what is displayed on the top of your browser when you
+                    visit
+                    a website and contains the title of the webpage that you are viewing.</li>
+                <li><strong>&lt;base&gt;:</strong> It specifies the base URL for all relative URL's in a document.</li>
+                <li><strong>&lt;noscript&gt;:</strong> Defines a section of HTML that is inserted when the scripting has
+                    been turned off in the users browser.</li>
+                <li><strong>&lt;script&gt;:</strong> This tag is used to add functionality in the website with the help
+                    of
+                    JavaScript.</li>
+                <li><strong>&lt;meta&gt;:</strong> This tag encloses the meta data of the website that must be loaded
+                    every
+                    time the website is visited. For example, the metadata charset allows you to use the standard UTF-8
+                    encoding in your website. This in turn allows the users to view your webpage in the language of
+                    their
+                    choice. It is a self-closing tag.</li>
+                <li><strong>&lt;link&gt;:</strong> The 'link' tag is used to tie together HTML, CSS, and JavaScript. It
+                    is
+                    self-closing.</li>
+            </ul>
+            <p><strong>&lt;body&gt;:</strong>The body tag is used to enclose all the visible content of a webpage. In
+                other
+                words, the body content is what the browser will show on the front-end.</p>
+        </section>
+        <section>
+            <h2>Features of HTML</h2>
+            <ul>
+                <li>It is easy to learn and easy to use.</li>
+                <li>It is platform-independent.</li>
+                <li>Images, videos, and audio can be added to a web page.</li>
+                <li>Hypertext can be added to the text.</li>
+                <li>It is a markup language.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Why Learn HTML?</h2>
+            <ul>
+                <li>It is a simple markup language. Its implementation is easy.</li>
+                <li>It is used to create a website.</li>
+                <li>Helps in developing fundamentals about web programming.</li>
+                <li>Boosts professional career.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Advantages of HTML</h2>
+            <ul>
+                <li>HTML is used to build websites.</li>
+                <li>It is supported by all browsers.</li>
+                <li>It can be integrated with other languages like CSS, JavaScript, etc.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Disadvantages of HTML</h2>
+            <ul>
+                <li>HTML can only create static web pages. For dynamic web pages, other languages have to be used.</li>
+                <li>A large amount of code has to be written to create a simple web page.</li>
+                <li>The security feature is not good.</li>
+            </ul>
+        </section>
+    </div>
+    <button id="start-quiz" class="quiz-button">Quiz</button>
+    <div id="timer">00:00:00</div>
+
+    <script>
+        // Timer logic
+        let startTime;
+        let timerUpdate;
+
+        const timerDisplay = document.getElementById('timer');
+
+        function startTimer() {
+            startTime = Date.now();
+            updateTimer();
+        }
+
+        function updateTimer() {
+            const elapsedTime = Math.floor((Date.now() - startTime) / 1000); // Calculate elapsed time in seconds
+            const hours = Math.floor(elapsedTime / 3600);
+            const minutes = Math.floor((elapsedTime % 3600) / 60);
+            const seconds = elapsedTime % 60;
+            timerDisplay.textContent = `${hours}:${minutes < 10 ? '0' : ''}${minutes}:${seconds < 10 ? '0' : ''}${seconds}`;
+
+            timerUpdate = setTimeout(updateTimer, 1000); // Update the timer every second
+        }
+
+        function stopTimer() {
+            clearTimeout(timerUpdate);
+        }
+
+        // Start the timer when the page loads
+        window.addEventListener('load', startTimer);
+
+        // Stop the timer when someone leaves the page
+        window.addEventListener('beforeunload', stopTimer);
+
+        // Function to redirect to the Quiz.html page
+        function redirectToQuizPage() {
+            window.location.href = 'quiz.html';
+        }
+        document.getElementById('start-quiz').addEventListener('click', redirectToQuizPage);
+    </script>
+
+</body>
+
+</html>
